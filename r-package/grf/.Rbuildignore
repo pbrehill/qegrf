@@ -8,3 +8,5 @@
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^R/local_polynomial_reg\\.R$
+^man/local_polynomial_reg\\.Rd$

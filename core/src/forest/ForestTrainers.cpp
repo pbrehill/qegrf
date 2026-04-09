@@ -20,12 +20,14 @@
 #include "forest/ForestTrainers.h"
 #include "prediction/CausalSurvivalPredictionStrategy.h"
 #include "prediction/InstrumentalPredictionStrategy.h"
+#include "prediction/RDPredictionStrategy.h"
 #include "prediction/MultiCausalPredictionStrategy.h"
 #include "prediction/RegressionPredictionStrategy.h"
 #include "prediction/MultiRegressionPredictionStrategy.h"
 #include "prediction/ProbabilityPredictionStrategy.h"
 #include "relabeling/CausalSurvivalRelabelingStrategy.h"
 #include "relabeling/InstrumentalRelabelingStrategy.h"
+#include "relabeling/RDRelabelingStrategy.h"
 #include "relabeling/MultiCausalRelabelingStrategy.h"
 #include "relabeling/LLRegressionRelabelingStrategy.h"
 #include "relabeling/NoopRelabelingStrategy.h"
@@ -49,6 +51,20 @@ ForestTrainer instrumental_trainer(double reduced_form_weight,
           ? std::unique_ptr<SplittingRuleFactory>(new InstrumentalSplittingRuleFactory())
           : std::unique_ptr<SplittingRuleFactory>(new RegressionSplittingRuleFactory());
   std::unique_ptr<OptimizedPredictionStrategy> prediction_strategy(new InstrumentalPredictionStrategy());
+
+  return ForestTrainer(std::move(relabeling_strategy),
+                       std::move(splitting_rule_factory),
+                       std::move(prediction_strategy));
+}
+
+ForestTrainer rd_trainer(double reduced_form_weight,
+                         bool stabilize_splits) {
+
+  std::unique_ptr<RelabelingStrategy> relabeling_strategy(new RDRelabelingStrategy(reduced_form_weight));
+  std::unique_ptr<SplittingRuleFactory> splitting_rule_factory = stabilize_splits
+          ? std::unique_ptr<SplittingRuleFactory>(new InstrumentalSplittingRuleFactory())
+          : std::unique_ptr<SplittingRuleFactory>(new RegressionSplittingRuleFactory());
+  std::unique_ptr<OptimizedPredictionStrategy> prediction_strategy(new RDPredictionStrategy());
 
   return ForestTrainer(std::move(relabeling_strategy),
                        std::move(splitting_rule_factory),

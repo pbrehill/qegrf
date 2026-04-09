@@ -63,6 +63,22 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// rd_local_polynomial_tau
+double rd_local_polynomial_tau(const Rcpp::NumericVector& running_var, const Rcpp::NumericVector& y, int order, double bandwidth, const std::string& kernel, Rcpp::Nullable<Rcpp::NumericVector> weights);
+RcppExport SEXP _grf_rd_local_polynomial_tau(SEXP running_varSEXP, SEXP ySEXP, SEXP orderSEXP, SEXP bandwidthSEXP, SEXP kernelSEXP, SEXP weightsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::NumericVector& >::type running_var(running_varSEXP);
+    Rcpp::traits::input_parameter< const Rcpp::NumericVector& >::type y(ySEXP);
+    Rcpp::traits::input_parameter< int >::type order(orderSEXP);
+    Rcpp::traits::input_parameter< double >::type bandwidth(bandwidthSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type kernel(kernelSEXP);
+    Rcpp::traits::input_parameter< Rcpp::Nullable<Rcpp::NumericVector> >::type weights(weightsSEXP);
+    rcpp_result_gen = Rcpp::wrap(rd_local_polynomial_tau(running_var, y, order, bandwidth, kernel, weights));
+    return rcpp_result_gen;
+END_RCPP
+}
 // causal_train
 Rcpp::List causal_train(const Rcpp::NumericMatrix& train_matrix, size_t outcome_index, size_t treatment_index, size_t sample_weight_index, bool use_sample_weights, unsigned int mtry, unsigned int num_trees, unsigned int min_node_size, double sample_fraction, bool honesty, double honesty_fraction, bool honesty_prune_leaves, size_t ci_group_size, double reduced_form_weight, double alpha, double imbalance_penalty, bool stabilize_splits, std::vector<size_t> clusters, unsigned int samples_per_cluster, bool compute_oob_predictions, unsigned int num_threads, unsigned int seed, bool legacy_seed, bool verbose);
 RcppExport SEXP _grf_causal_train(SEXP train_matrixSEXP, SEXP outcome_indexSEXP, SEXP treatment_indexSEXP, SEXP sample_weight_indexSEXP, SEXP use_sample_weightsSEXP, SEXP mtrySEXP, SEXP num_treesSEXP, SEXP min_node_sizeSEXP, SEXP sample_fractionSEXP, SEXP honestySEXP, SEXP honesty_fractionSEXP, SEXP honesty_prune_leavesSEXP, SEXP ci_group_sizeSEXP, SEXP reduced_form_weightSEXP, SEXP alphaSEXP, SEXP imbalance_penaltySEXP, SEXP stabilize_splitsSEXP, SEXP clustersSEXP, SEXP samples_per_clusterSEXP, SEXP compute_oob_predictionsSEXP, SEXP num_threadsSEXP, SEXP seedSEXP, SEXP legacy_seedSEXP, SEXP verboseSEXP) {
@@ -308,6 +324,81 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< bool >::type estimate_variance(estimate_varianceSEXP);
     Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
     rcpp_result_gen = Rcpp::wrap(instrumental_predict_oob(forest_object, train_matrix, outcome_index, treatment_index, instrument_index, num_threads, estimate_variance, verbose));
+    return rcpp_result_gen;
+END_RCPP
+}
+// rd_train
+Rcpp::List rd_train(const Rcpp::NumericMatrix& train_matrix, size_t outcome_index, size_t treatment_index, size_t instrument_index, size_t running_index, size_t sample_weight_index, bool use_sample_weights, unsigned int mtry, unsigned int num_trees, unsigned int min_node_size, double sample_fraction, bool honesty, double honesty_fraction, bool honesty_prune_leaves, size_t ci_group_size, double reduced_form_weight, double alpha, double imbalance_penalty, bool stabilize_splits, std::vector<size_t> clusters, unsigned int samples_per_cluster, bool compute_oob_predictions, unsigned int num_threads, unsigned int seed, bool legacy_seed, bool verbose);
+RcppExport SEXP _grf_rd_train(SEXP train_matrixSEXP, SEXP outcome_indexSEXP, SEXP treatment_indexSEXP, SEXP instrument_indexSEXP, SEXP running_indexSEXP, SEXP sample_weight_indexSEXP, SEXP use_sample_weightsSEXP, SEXP mtrySEXP, SEXP num_treesSEXP, SEXP min_node_sizeSEXP, SEXP sample_fractionSEXP, SEXP honestySEXP, SEXP honesty_fractionSEXP, SEXP honesty_prune_leavesSEXP, SEXP ci_group_sizeSEXP, SEXP reduced_form_weightSEXP, SEXP alphaSEXP, SEXP imbalance_penaltySEXP, SEXP stabilize_splitsSEXP, SEXP clustersSEXP, SEXP samples_per_clusterSEXP, SEXP compute_oob_predictionsSEXP, SEXP num_threadsSEXP, SEXP seedSEXP, SEXP legacy_seedSEXP, SEXP verboseSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::NumericMatrix& >::type train_matrix(train_matrixSEXP);
+    Rcpp::traits::input_parameter< size_t >::type outcome_index(outcome_indexSEXP);
+    Rcpp::traits::input_parameter< size_t >::type treatment_index(treatment_indexSEXP);
+    Rcpp::traits::input_parameter< size_t >::type instrument_index(instrument_indexSEXP);
+    Rcpp::traits::input_parameter< size_t >::type running_index(running_indexSEXP);
+    Rcpp::traits::input_parameter< size_t >::type sample_weight_index(sample_weight_indexSEXP);
+    Rcpp::traits::input_parameter< bool >::type use_sample_weights(use_sample_weightsSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type mtry(mtrySEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type num_trees(num_treesSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type min_node_size(min_node_sizeSEXP);
+    Rcpp::traits::input_parameter< double >::type sample_fraction(sample_fractionSEXP);
+    Rcpp::traits::input_parameter< bool >::type honesty(honestySEXP);
+    Rcpp::traits::input_parameter< double >::type honesty_fraction(honesty_fractionSEXP);
+    Rcpp::traits::input_parameter< bool >::type honesty_prune_leaves(honesty_prune_leavesSEXP);
+    Rcpp::traits::input_parameter< size_t >::type ci_group_size(ci_group_sizeSEXP);
+    Rcpp::traits::input_parameter< double >::type reduced_form_weight(reduced_form_weightSEXP);
+    Rcpp::traits::input_parameter< double >::type alpha(alphaSEXP);
+    Rcpp::traits::input_parameter< double >::type imbalance_penalty(imbalance_penaltySEXP);
+    Rcpp::traits::input_parameter< bool >::type stabilize_splits(stabilize_splitsSEXP);
+    Rcpp::traits::input_parameter< std::vector<size_t> >::type clusters(clustersSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type samples_per_cluster(samples_per_clusterSEXP);
+    Rcpp::traits::input_parameter< bool >::type compute_oob_predictions(compute_oob_predictionsSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type num_threads(num_threadsSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type seed(seedSEXP);
+    Rcpp::traits::input_parameter< bool >::type legacy_seed(legacy_seedSEXP);
+    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
+    rcpp_result_gen = Rcpp::wrap(rd_train(train_matrix, outcome_index, treatment_index, instrument_index, running_index, sample_weight_index, use_sample_weights, mtry, num_trees, min_node_size, sample_fraction, honesty, honesty_fraction, honesty_prune_leaves, ci_group_size, reduced_form_weight, alpha, imbalance_penalty, stabilize_splits, clusters, samples_per_cluster, compute_oob_predictions, num_threads, seed, legacy_seed, verbose));
+    return rcpp_result_gen;
+END_RCPP
+}
+// rd_predict
+Rcpp::List rd_predict(const Rcpp::List& forest_object, const Rcpp::NumericMatrix& train_matrix, size_t outcome_index, size_t treatment_index, size_t instrument_index, size_t running_index, const Rcpp::NumericMatrix& test_matrix, unsigned int num_threads, bool estimate_variance, bool verbose);
+RcppExport SEXP _grf_rd_predict(SEXP forest_objectSEXP, SEXP train_matrixSEXP, SEXP outcome_indexSEXP, SEXP treatment_indexSEXP, SEXP instrument_indexSEXP, SEXP running_indexSEXP, SEXP test_matrixSEXP, SEXP num_threadsSEXP, SEXP estimate_varianceSEXP, SEXP verboseSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::List& >::type forest_object(forest_objectSEXP);
+    Rcpp::traits::input_parameter< const Rcpp::NumericMatrix& >::type train_matrix(train_matrixSEXP);
+    Rcpp::traits::input_parameter< size_t >::type outcome_index(outcome_indexSEXP);
+    Rcpp::traits::input_parameter< size_t >::type treatment_index(treatment_indexSEXP);
+    Rcpp::traits::input_parameter< size_t >::type instrument_index(instrument_indexSEXP);
+    Rcpp::traits::input_parameter< size_t >::type running_index(running_indexSEXP);
+    Rcpp::traits::input_parameter< const Rcpp::NumericMatrix& >::type test_matrix(test_matrixSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type num_threads(num_threadsSEXP);
+    Rcpp::traits::input_parameter< bool >::type estimate_variance(estimate_varianceSEXP);
+    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
+    rcpp_result_gen = Rcpp::wrap(rd_predict(forest_object, train_matrix, outcome_index, treatment_index, instrument_index, running_index, test_matrix, num_threads, estimate_variance, verbose));
+    return rcpp_result_gen;
+END_RCPP
+}
+// rd_predict_oob
+Rcpp::List rd_predict_oob(const Rcpp::List& forest_object, const Rcpp::NumericMatrix& train_matrix, size_t outcome_index, size_t treatment_index, size_t instrument_index, size_t running_index, unsigned int num_threads, bool estimate_variance, bool verbose);
+RcppExport SEXP _grf_rd_predict_oob(SEXP forest_objectSEXP, SEXP train_matrixSEXP, SEXP outcome_indexSEXP, SEXP treatment_indexSEXP, SEXP instrument_indexSEXP, SEXP running_indexSEXP, SEXP num_threadsSEXP, SEXP estimate_varianceSEXP, SEXP verboseSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::List& >::type forest_object(forest_objectSEXP);
+    Rcpp::traits::input_parameter< const Rcpp::NumericMatrix& >::type train_matrix(train_matrixSEXP);
+    Rcpp::traits::input_parameter< size_t >::type outcome_index(outcome_indexSEXP);
+    Rcpp::traits::input_parameter< size_t >::type treatment_index(treatment_indexSEXP);
+    Rcpp::traits::input_parameter< size_t >::type instrument_index(instrument_indexSEXP);
+    Rcpp::traits::input_parameter< size_t >::type running_index(running_indexSEXP);
+    Rcpp::traits::input_parameter< unsigned int >::type num_threads(num_threadsSEXP);
+    Rcpp::traits::input_parameter< bool >::type estimate_variance(estimate_varianceSEXP);
+    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
+    rcpp_result_gen = Rcpp::wrap(rd_predict_oob(forest_object, train_matrix, outcome_index, treatment_index, instrument_index, running_index, num_threads, estimate_variance, verbose));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -788,6 +879,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_grf_compute_weights", (DL_FUNC) &_grf_compute_weights, 5},
     {"_grf_compute_weights_oob", (DL_FUNC) &_grf_compute_weights_oob, 4},
     {"_grf_merge", (DL_FUNC) &_grf_merge, 1},
+    {"_grf_rd_local_polynomial_tau", (DL_FUNC) &_grf_rd_local_polynomial_tau, 6},
     {"_grf_causal_train", (DL_FUNC) &_grf_causal_train, 24},
     {"_grf_causal_predict", (DL_FUNC) &_grf_causal_predict, 8},
     {"_grf_causal_predict_oob", (DL_FUNC) &_grf_causal_predict_oob, 7},
@@ -799,6 +891,9 @@ static const R_CallMethodDef CallEntries[] = {
     {"_grf_instrumental_train", (DL_FUNC) &_grf_instrumental_train, 25},
     {"_grf_instrumental_predict", (DL_FUNC) &_grf_instrumental_predict, 9},
     {"_grf_instrumental_predict_oob", (DL_FUNC) &_grf_instrumental_predict_oob, 8},
+    {"_grf_rd_train", (DL_FUNC) &_grf_rd_train, 26},
+    {"_grf_rd_predict", (DL_FUNC) &_grf_rd_predict, 10},
+    {"_grf_rd_predict_oob", (DL_FUNC) &_grf_rd_predict_oob, 9},
     {"_grf_multi_causal_train", (DL_FUNC) &_grf_multi_causal_train, 24},
     {"_grf_multi_causal_predict", (DL_FUNC) &_grf_multi_causal_predict, 8},
     {"_grf_multi_causal_predict_oob", (DL_FUNC) &_grf_multi_causal_predict_oob, 7},

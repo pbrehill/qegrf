@@ -26,6 +26,8 @@ namespace grf {
 
 ForestPredictor instrumental_predictor(uint num_threads);
 
+ForestPredictor rd_predictor(uint num_threads);
+
 ForestPredictor multi_causal_predictor(uint num_threads, size_t num_treatments, size_t num_outcomes);
 
 ForestPredictor quantile_predictor(uint num_threads,

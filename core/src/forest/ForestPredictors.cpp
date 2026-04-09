@@ -19,6 +19,7 @@
 
 #include "forest/ForestPredictors.h"
 #include "prediction/InstrumentalPredictionStrategy.h"
+#include "prediction/RDPredictionStrategy.h"
 #include "prediction/MultiCausalPredictionStrategy.h"
 #include "prediction/QuantilePredictionStrategy.h"
 #include "prediction/ProbabilityPredictionStrategy.h"
@@ -34,6 +35,12 @@ namespace grf {
 ForestPredictor instrumental_predictor(uint num_threads) {
   num_threads = ForestOptions::validate_num_threads(num_threads);
   std::unique_ptr<OptimizedPredictionStrategy> prediction_strategy(new InstrumentalPredictionStrategy());
+  return ForestPredictor(num_threads, std::move(prediction_strategy));
+}
+
+ForestPredictor rd_predictor(uint num_threads) {
+  num_threads = ForestOptions::validate_num_threads(num_threads);
+  std::unique_ptr<OptimizedPredictionStrategy> prediction_strategy(new RDPredictionStrategy());
   return ForestPredictor(num_threads, std::move(prediction_strategy));
 }
 

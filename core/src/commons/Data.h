@@ -64,6 +64,8 @@ public:
 
   void set_instrument_index(size_t index);
 
+  void set_running_index(size_t index);
+
   void set_weight_index(size_t index);
 
   void set_causal_survival_numerator_index(size_t index);
@@ -110,6 +112,8 @@ public:
 
   double get_instrument(size_t row) const;
 
+  double get_running(size_t row) const;
+
   double get_weight(size_t row) const;
 
   double get_causal_survival_numerator(size_t row) const;
@@ -129,6 +133,7 @@ private:
   std::optional<std::vector<size_t>> outcome_index;
   std::optional<std::vector<size_t>> treatment_index;
   std::optional<size_t> instrument_index;
+  std::optional<size_t> running_index;
   std::optional<size_t> weight_index;
   std::optional<size_t> causal_survival_numerator_index;
   std::optional<size_t> causal_survival_denominator_index;
@@ -162,6 +167,10 @@ inline Eigen::VectorXd Data::get_treatments(size_t row) const {
 
 inline double Data::get_instrument(size_t row) const {
   return get(row, instrument_index.value());
+}
+
+inline double Data::get_running(size_t row) const {
+  return get(row, running_index.value());
 }
 
 inline double Data::get_weight(size_t row) const {

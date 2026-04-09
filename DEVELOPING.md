@@ -75,6 +75,7 @@ The following table shows the current collection of forests implemented and the 
 | causal_forest with ll_causal_predict 	| InstrumentalRelabelingStrategy   	| InstrumentalSplittingRule    	| LLCausalPredictionStrategy        	|
 | causal_survival_forest               	| CausalSurvivalRelabelingStrategy 	| CausalSurvivalSplittingRule  	| CausalSurvivalPredictionStrategy  	|
 | instrumental_forest                  	| InstrumentalRelabelingStrategy   	| InstrumentalSplittingRule    	| InstrumentalPredictionStrategy    	|
+| rd_forest                             | RDRelabelingStrategy              | InstrumentalSplittingRule     | RDPredictionStrategy              |
 | ll_regression_forest                 	| LLRegressionRelabelingStrategy   	| RegressionSplittingRule      	| LocalLinearPredictionStrategy      	|
 | lm_forest                            	| MultiCausalRelabelingStrategy    	| MultiRegressionSplittingRule  | MultiCausalPredictionStrategy     	|
 | multi_arm_causal_forest              	| MultiCausalRelabelingStrategy    	| MultiCausalSplittingRule      | MultiCausalPredictionStrategy     	|

@@ -65,6 +65,11 @@ void Data::set_instrument_index(size_t index) {
   disallowed_split_variables.insert(index);
 }
 
+void Data::set_running_index(size_t index) {
+  this->running_index = index;
+  disallowed_split_variables.insert(index);
+}
+
 void Data::set_weight_index(size_t index) {
   this->weight_index = index;
   disallowed_split_variables.insert(index);
